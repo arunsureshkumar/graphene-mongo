@@ -1,14 +1,25 @@
 from datetime import datetime
+from mongomock import gridfs
 from mongoengine import (
     connect, Document, EmbeddedDocument
 )
 from mongoengine.fields import (
-    DateTimeField, EmailField, EmbeddedDocumentField,
-    FloatField, EmbeddedDocumentListField, ListField, LazyReferenceField,
-    MapField, PointField, ReferenceField, StringField,
     MultiPolygonField
+    DateTimeField,
+    EmailField,
+    EmbeddedDocumentField,
+    EmbeddedDocumentListField,
+    FileField,
+    FloatField,
+    LazyReferenceField,
+    ListField,
+    MapField,
+    PointField,
+    ReferenceField,
+    StringField
 )
 
+gridfs.enable_gridfs_integration()
 connect('graphene-mongo-test', host='mongomock://localhost', alias='default')
 
 
@@ -36,6 +47,10 @@ class Editor(Document):
     last_name = StringField(required=True, help_text="Editor's last name.")
     metadata = MapField(field=StringField(), help_text="Arbitrary metadata.")
     company = LazyReferenceField(Publisher)
+    first_name = StringField(required=True)
+    last_name = StringField(required=True)
+    metadata = MapField(field=StringField())
+    avatar = FileField()
 
 
 class Article(Document):

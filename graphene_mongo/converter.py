@@ -69,7 +69,7 @@ def convert_dict_to_jsonstring(field, registry=None):
 
 
 @convert_mongoengine_field.register(mongoengine.PointField)
-def convert_point_to_field(field, register=None):
+def convert_field_to_field(field, register=None):
     return Field(PointFieldType)
 
 
@@ -81,6 +81,12 @@ def convert_multipolygon_to_field(field, register=None):
 @convert_mongoengine_field.register(mongoengine.DateTimeField)
 def convert_field_to_datetime(field, registry=None):
     return DateTime(description=get_field_description(field, registry), required=field.required)
+
+
+@convert_mongoengine_field.register(mongoengine.FileField)
+def convert_field_to_none(field, register=None):
+    # FIXME
+    return None
 
 
 @convert_mongoengine_field.register(mongoengine.ListField)
