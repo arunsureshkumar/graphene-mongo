@@ -17,6 +17,7 @@ __all__ = [
 def _resolve_type_coordinates(self, info):
     return self['coordinates']
 
+
 class FsFile(Document):
 
     meta = {'collection': 'fs.files'}

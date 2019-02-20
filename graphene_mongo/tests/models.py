@@ -4,7 +4,6 @@ from mongoengine import (
     connect, Document, EmbeddedDocument
 )
 from mongoengine.fields import (
-    MultiPolygonField
     DateTimeField,
     EmailField,
     EmbeddedDocumentField,
@@ -14,6 +13,7 @@ from mongoengine.fields import (
     LazyReferenceField,
     ListField,
     MapField,
+    MultiPolygonField,
     PointField,
     ReferenceField,
     StringField

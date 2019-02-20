@@ -1,3 +1,4 @@
+import mongoengine
 from graphene import (
     ID,
     Boolean,
@@ -13,12 +14,7 @@ from graphene import (
 )
 from graphene.types.json import JSONString
 
-import mongoengine
-
-from .advanced_types import PointFieldType, MultiPolygonFieldType
 from .utils import import_single_dispatch, get_field_description
-from .fields import MongoengineConnectionField
-from .utils import import_single_dispatch
 
 singledispatch = import_single_dispatch()
 
@@ -78,6 +74,7 @@ def convert_field_to_field(field, register=None):
 
 @convert_mongoengine_field.register(mongoengine.MultiPolygonField)
 def convert_multipolygon_to_field(field, register=None):
+    from .advanced_types import MultiPolygonFieldType
     return Field(MultiPolygonFieldType)
 
 

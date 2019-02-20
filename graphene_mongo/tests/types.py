@@ -9,8 +9,8 @@ from ..types import MongoengineObjectType
 class PublisherType(MongoengineObjectType):
 
     class Meta:
-        model = Publisher
-/
+        model = models.Publisher
+
 
 class EditorType(MongoengineObjectType):
 
@@ -57,7 +57,7 @@ class ChildType(MongoengineObjectType):
 class CellTowerType(MongoengineObjectType):
 
     class Meta:
-        model = CellTower
+        model = models.CellTower
 
 
 class ProfessorMetadataType(MongoengineObjectType):
