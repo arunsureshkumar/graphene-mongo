@@ -47,9 +47,6 @@ class Editor(Document):
     last_name = StringField(required=True, help_text="Editor's last name.")
     metadata = MapField(field=StringField(), help_text="Arbitrary metadata.")
     company = LazyReferenceField(Publisher)
-    first_name = StringField(required=True)
-    last_name = StringField(required=True)
-    metadata = MapField(field=StringField())
     avatar = FileField()
 
 
